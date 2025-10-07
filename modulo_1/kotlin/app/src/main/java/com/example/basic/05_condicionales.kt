@@ -36,4 +36,17 @@ fun main(){
         peligro<=3 -> println("Misión Aceptada")
         else -> println("Requiere Evaluación Adicional")
     }
+
+
+
+    println("Ingresa tu promedio")
+    var promedio: Int = readln()?.toIntOrNull()?:0
+    println("Ingresa true si trabajas o false si no trabajas")
+    var trabaja: Boolean = readln()?.toBooleanStrictOrNull()?: false
+
+    when{
+        promedio>90 && !trabaja-> println("Beca completa")
+        promedio>90 && trabaja-> println("Beca parcial")
+        else -> println("No obtiene beca")
+    }
 }
