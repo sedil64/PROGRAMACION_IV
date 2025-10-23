@@ -1,14 +1,20 @@
 void main() {
-  int n = 10;
-  int tabla = 3;
+  int partidos = 10;
+  int golesPromedio = 3;
   int i = 0;
-  while (i <= n) {
+  
+  print("Goles anotados por partido:");
+  while (i <= partidos) {
     i++;
-    print("$i * $tabla = ${i * tabla}");
+    print("Partido $i con promedio $golesPromedio goles = ${i * golesPromedio} goles totales");
   }
-  i=1;
-  do{
-    print("$i * $tabla = ${i*tabla}");
+  
+  print("\nTítulos ganados por temporada:");
+  int temporadas = 10;
+  int titulosPorTemporada = 2;
+  i = 1;
+  do {
+    print("Temporada $i con $titulosPorTemporada títulos = ${i * titulosPorTemporada} títulos acumulados");
     i++;
-  }while(i<n);
-}
+  } while(i < temporadas);
+  

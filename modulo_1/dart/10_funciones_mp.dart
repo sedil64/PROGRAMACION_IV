@@ -1,18 +1,20 @@
 void main() {
-  print(greetEveryone());
-  print(suma(3, 4));
-  print(addTwoNumbersOptional(6, 8));
-  print(addTwoNumbersOptional(8));
-  print(greetPerson(name: "Higuera", message: "Hasta la vista"));
+  print(saludarEquipo());
+  print(sumarTitulos(16, 14));
+  print(calcularGolesOpcional(5, 3));
+  print(calcularGolesOpcional(8));
+  print(presentarJugador(nombre: "Damián Díaz", equipo: "Barcelona SC"));
+  print(presentarJugador(nombre: "Miller Bolaños"));
 }
 
-String greetEveryone() => 'Hello everyone';
-int suma(int a, int b) => a + b;
+String saludarEquipo() => 'Bienvenidos hinchas del Barcelona SC';
 
-int addTwoNumbersOptional(int a, [int b = 0]) {
-  return a + b;
+int sumarTitulos(int equipo1, int equipo2) => equipo1 + equipo2;
+
+int calcularGolesOpcional(int golesLocal, [int golesVisita = 0]) {
+  return golesLocal + golesVisita;
 }
 
-String greetPerson({required String name, String message = 'Hola'}) {
-  return '$message $name';
+String presentarJugador({required String nombre, String equipo = 'Independiente del Valle'}) {
+  return '$equipo - Jugador: $nombre';
 }
