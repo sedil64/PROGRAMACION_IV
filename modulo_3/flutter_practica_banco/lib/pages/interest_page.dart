@@ -38,10 +38,10 @@ class _InterestPageState extends State<InterestPage> {
 
     setState(() {
       resultText =
-        'Tipo: $accountType\n'
-        'Interés anual: ${rate.toStringAsFixed(1)} %\n'
-        'Interés ganado: \$${interest.toStringAsFixed(2)}\n'
-        'Monto total: \$${total.toStringAsFixed(2)}';
+          'Tipo: $accountType\n'
+          'Interés anual: ${rate.toStringAsFixed(1)} %\n'
+          'Interés ganado: \$${interest.toStringAsFixed(2)}\n'
+          'Monto total: \$${total.toStringAsFixed(2)}';
     });
   }
 

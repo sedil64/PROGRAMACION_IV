@@ -123,32 +123,58 @@ fun TallerHomeScreen(nav: NavHostController) {
 /* ======================================================
     PANTALLA 1 — CONSUMO DE COMBUSTIBLE
 ========================================================= */
+/* ======================================================
+    PANTALLA 1 — CONSUMO DE COMBUSTIBLE (CON SELECT)
+========================================================= */
 @Composable
 fun CombustibleScreen(nav: NavController) {
+
+    // Colores (no se modificaron)
     val bg = Color(0xFF0D1117)
     val card = Color(0xFF161B22)
     val accent = Color(0xFF58A6FF)
 
+    // Estados para los TextField
     var km by remember { mutableStateOf("") }
     var litros by remember { mutableStateOf("") }
 
+    // Estado para el resultado del consumo
     val consumo = calcularConsumo(km, litros)
+
+    /* -------------------------------------------------------
+        🔽 NUEVO: Estados del Dropdown Menu (SELECT)
+       ------------------------------------------------------- */
+
+    var expanded by remember { mutableStateOf(false) }
+    // Texto que se muestra en el botón del select
+    var selectedVehiculo by remember { mutableStateOf("Selecciona un vehículo") }
+
+    /* Cómo funciona:
+        expanded = true  → el menú se abre
+        expanded = false → el menú se cierra
+        selectedVehiculo guarda lo que eligió el usuario
+    */
 
     Box(
         modifier = Modifier.fillMaxSize().background(bg)
     ) {
         Column(
             modifier = Modifier.padding(20.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
+            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
+
+            /* -------------------------------------------------------
+                TARJETA PRINCIPAL
+            -------------------------------------------------------- */
             Card(
                 colors = CardDefaults.cardColors(card),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Column(
                     modifier = Modifier.padding(20.dp),
-                    verticalArrangement = Arrangement.spacedBy(12.dp)
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
+
                     Text(
                         "Consumo de combustible",
                         style = MaterialTheme.typography.titleLarge,
@@ -156,6 +182,9 @@ fun CombustibleScreen(nav: NavController) {
                         color = accent
                     )
 
+                    /* -------------------------------------------------------
+                        TextFields para ingreso de datos
+                    -------------------------------------------------------- */
                     OutlinedTextField(
                         value = km,
                         onValueChange = { km = it },
@@ -170,11 +199,71 @@ fun CombustibleScreen(nav: NavController) {
                         modifier = Modifier.fillMaxWidth()
                     )
 
+                    /* -------------------------------------------------------
+                        SELECT (DropdownMenu)
+                        Aquí empieza el comboBox básico que pediste.
+                    -------------------------------------------------------- */
+
+                    Text(
+                        "Tipo de vehículo:",
+                        color = Color(0xFFC9D1D9),
+                        fontWeight = FontWeight.SemiBold
+                    )
+
+                    Box {
+                        // Botón que abre el menú
+                        OutlinedButton(
+                            onClick = { expanded = true },           // abre el menú
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Text(selectedVehiculo)                   // muestra la opción seleccionada
+                        }
+
+                        // Menú desplegable
+                        DropdownMenu(
+                            expanded = expanded,
+                            onDismissRequest = { expanded = false }  // se cierra al tocar fuera
+                        ) {
+
+                            /* Cada DropdownMenuItem es una opción */
+
+                            DropdownMenuItem(
+                                text = { Text("Auto") },
+                                onClick = {
+                                    selectedVehiculo = "Auto"
+                                    expanded = false                 // cerrar el menú
+                                }
+                            )
+
+                            DropdownMenuItem(
+                                text = { Text("Moto") },
+                                onClick = {
+                                    selectedVehiculo = "Moto"
+                                    expanded = false
+                                }
+                            )
+
+                            DropdownMenuItem(
+                                text = { Text("Camión") },
+                                onClick = {
+                                    selectedVehiculo = "Camión"
+                                    expanded = false
+                                }
+                            )
+                        }
+                    }
+
+
                     if (consumo > 0)
-                        Text("Consumo promedio: ${"%.2f".format(consumo)} km/L",
-                            color = Color(0xFFC9D1D9))
+                        Text(
+                            "Consumo promedio: ${"%.2f".format(consumo)} km/L",
+                            color = Color(0xFFC9D1D9)
+                        )
                     else
-                        Text("Ingresa datos válidos", color = Color(0xFFF85149))
+                        Text(
+                            "Ingresa datos válidos",
+                            color = Color(0xFFF85149)
+                        )
                 }
             }
 
