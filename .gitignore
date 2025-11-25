@@ -1,0 +1,72 @@
+# ==========================
+# Flutter
+# ==========================
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+pubspec.lock
+.dart_tool/
+coverage/
+*.flutter-plugins
+generated_plugin_registrant.dart
+
+# ==========================
+# React Native / Expo
+# ==========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.expo/
+.expo-shared/
+android/
+ios/
+web-build/
+
+# Metro bundler cache
+.expo/*
+*.expo
+.expo/*
+.expo-shared/*
+dist/
+
+# Typescript
+*.tsbuildinfo
+
+# ==========================
+# Android / Kotlin
+# ==========================
+*.iml
+.gradle
+/local.properties
+/.idea
+/.cxx
+*.jks
+*.keystore
+captures/
+output.json
+
+# ==========================
+# iOS
+# ==========================
+Pods/
+Podfile.lock
+*.xcworkspace
+*.xcuserdatad
+*.xcuserdata
+*.xcproject
+DerivedData/
+.build/
+
+# ==========================
+# VS Code
+# ==========================
+.vscode/
+
+# ==========================
+# System
+# ==========================
+Thumbs.db
+.DS_Store
+*.log
